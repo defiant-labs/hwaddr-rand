@@ -1,7 +1,7 @@
 hwaddr-rand
 ===========
 
-Linux kernel module for generating random MAC-addresseses for all attached network adapters upon load.
+Linux kernel module for generating random MAC-addresses for all attached network adapters upon load.
 
 WIP
 ===

@@ -3,6 +3,7 @@
 *.ko
 
 # Weird stuff
+.tmp_versions
 *.mod.c
 modules.order
 Module.symvers
