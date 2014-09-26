@@ -9,13 +9,16 @@ This is a work-in-progress stub of the project. The release date is *soon*.
 
 INSTALL
 ---
+
     make clean all
     sudo make install
 
 USAGE
 ---
 Run
+
     sudo modprobe hwaddr_rand
+
 or include `hwaddr_rand.ko` inside one of the `modprobe.d`'s .conf file to load on boot.
 
 ACHTUNG
