@@ -19,7 +19,7 @@ Run
 
     sudo modprobe hwaddr_rand
 
-or include `hwaddr_rand.ko` inside one of the `modprobe.d`'s .conf file to load on boot.
+or include `hwaddr_rand` inside one of the `modprobe.d`'s .conf files to load on boot.
 
 ACHTUNG
 ---
