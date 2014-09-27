@@ -8,6 +8,7 @@
 modules.order
 Module.symvers
 *.cmd
+*~
 
 # External files
 OUI.list

@@ -30,7 +30,7 @@ help:
 
 install: hwaddr_rand.ko
 	install -m644 -b -D hwaddr_rand.ko ${MDIR}/kernel/drivers/net/hwaddr_rand.ko
-	depmod -a
+	depmod ${MDIR}/kernel/drivers/net/hwaddr_rand.ko
 
 uninstall:
 	rm -f ${MDIR}/kernel/drivers/net/hwaddr_rand.ko

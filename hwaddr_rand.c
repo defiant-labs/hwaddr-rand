@@ -13,7 +13,7 @@ static int __init init(void)
 {
     struct net_device *dev;
 #ifdef OUI_LIST_H
-    unsigned char *oui;
+    int oui;
     long unsigned int rand;
 #endif
 
@@ -53,9 +53,9 @@ static int __init init(void)
             oui = oui_list[rand % (sizeof(oui_list) / sizeof(oui_list[0]))];
 
             get_random_bytes(dev->dev_addr, 6);
-            dev->dev_addr[0] = oui[0];
-            dev->dev_addr[1] = oui[1];
-            dev->dev_addr[2] = oui[2];
+            dev->dev_addr[0] = (oui >> (2 << 3)) & 0xFF;
+            dev->dev_addr[1] = (oui >> (1 << 3)) & 0xFF;
+            dev->dev_addr[2] = (oui >> (0 << 3)) & 0xFF;
 #endif
 
             pr_info("    [Done, the new MAC address for %s is %02x:%02x:%02x:%02x:%02x:%02x]\n"
