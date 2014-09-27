@@ -86,7 +86,7 @@ static void __exit fini(void)
 module_init(init);
 module_exit(fini);
 
-MODULE_AUTHOR("Defiant Labs (https://github.com/defiant-labs)");
 MODULE_DESCRIPTION("MAC address randomizer");
 MODULE_LICENSE("GPL");
 MODULE_VERSION("0.7");
+MODULE_AUTHOR("Defiant Labs (https://github.com/defiant-labs)");
