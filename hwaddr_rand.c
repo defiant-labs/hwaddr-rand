@@ -7,9 +7,6 @@
 
 // List of manufacturers
 #include "oui_list.h"
-// Comment out the line above to make
-// the module generate fully-random MACs
-// (instead of common OUI + 3 random bytes)
 
 
 static int __init init(void)
@@ -49,7 +46,7 @@ static int __init init(void)
             dev->dev_addr[0] &= 0xfe;    /* clear multicast bit */
             dev->dev_addr[0] |= 0x02;    /* set local assignment bit (IEEE802) */
 #else
-            pr_info("    [Generating a vendor-based MAC address for %s ...]\n", dev->name);
+            pr_info("    [Generating a vendor-based MAC address for %s] ...\n", dev->name);
 
             // oui = oui_list[55];
             get_random_bytes(&rand, sizeof(rand));
@@ -88,5 +85,5 @@ module_exit(fini);
 
 MODULE_DESCRIPTION("MAC address randomizer");
 MODULE_LICENSE("GPL");
-MODULE_VERSION("0.7");
+MODULE_VERSION("0.7.1");
 MODULE_AUTHOR("Defiant Labs (https://github.com/defiant-labs)");

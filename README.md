@@ -11,9 +11,10 @@ INSTALL
 
 USAGE
 ---
-The installation procedure in [Makefile](Makefile) copies [hwaddr_rand.conf](hwaddr_rand.conf) into the `/etc/modprobe.d/` directory.
+Make sure to add `hwaddr_rand` to either `/etc/modules` or to `/etc/modules-load.d/hwaddr_rand.conf`, 
+depending on your GNU/Linux OS environment variation.
 
-That makes the module load and randomize the MAC addresses during the next system boot.
+That will make the module load and randomize the MAC addresses during the next system boot.
 
 You can run
 
