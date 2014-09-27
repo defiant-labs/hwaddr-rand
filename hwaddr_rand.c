@@ -15,8 +15,10 @@
 static int __init init(void)
 {
     struct net_device *dev;
+#ifdef OUI_LIST_H
     unsigned char *oui;
     long unsigned int rand;
+#endif
 
     pr_info("\nHello. My name is hwaddr_rand and I am going to randomize \n"
         "MAC addresses of all your devices so badly that even the \n"
