@@ -5,25 +5,11 @@
 #include <linux/sched.h>
 #include <linux/netdevice.h>
 
-#include "oui_list.h" // List of manufacturers
+// List of manufacturers
+#include "oui_list.h"
 // Comment out the line above to make
 // the module generate fully-random MACs
 // (instead of common OUI + 3 random bytes)
-
-/*
-// #include <linux/etherdevice.h>
-#if LINUX_VERSION_CODE < KERNEL_VERSION(2,6,36)
-static inline void eth_hw_addr_random(struct net_device *dev)
-{
-    random_ether_addr(dev->dev_addr);
-}
-#elif LINUX_VERSION_CODE < KERNEL_VERSION(3,4,0)
-static inline void eth_hw_addr_random(struct net_device *dev)
-{
-    dev_hw_addr_random(dev, dev->dev_addr);
-}
-#endif
-*/
 
 static int __init init(void)
 {
