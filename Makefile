@@ -29,12 +29,12 @@ help:
 	$(MAKE) -C $(KDIR) M=$(PWD) help
 
 install: hwaddr_rand.ko
-	# install -m644 hwaddr_rand.conf /etc/modprobe.d/hwaddr_rand.conf
+	install -m644 hwaddr_rand.conf /etc/modprobe.d/hwaddr_rand.conf
 	install -m644 -b -D hwaddr_rand.ko ${MDIR}/kernel/drivers/net/hwaddr_rand.ko
 	depmod -a
 
 uninstall:
-	# rm -f /etc/modprobe.d/hwaddr_rand.conf
+	rm -f /etc/modprobe.d/hwaddr_rand.conf
 	rm -f ${MDIR}/kernel/drivers/net/hwaddr_rand.ko
 	depmod -a
 
