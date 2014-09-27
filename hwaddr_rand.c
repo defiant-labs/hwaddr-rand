@@ -11,6 +11,7 @@
 // the module generate fully-random MACs
 // (instead of common OUI + 3 random bytes)
 
+
 static int __init init(void)
 {
     struct net_device *dev;
@@ -79,9 +80,9 @@ static void __exit fini(void)
     pr_info("\nBye! Call me...\n");
 }
 
+
 module_init(init);
 module_exit(fini);
-
 
 MODULE_AUTHOR("Defiant Labs (https://github.com/defiant-labs)");
 MODULE_DESCRIPTION("MAC address randomizer");
