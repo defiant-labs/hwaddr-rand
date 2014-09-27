@@ -2,7 +2,7 @@
 # Makefile for hwaddr-rand Linux kernel module
 #
 
-ifneq ($(KERNELRELEASE),) # building from the outside
+ifneq ($(KERNELRELEASE),) # building as a stand-alone module
 
 
 obj-$(CONFIG_HWADDR_RAND) += hwaddr_rand.o
@@ -30,11 +30,11 @@ help:
 
 install: hwaddr_rand.ko
 	install -m644 -b -D hwaddr_rand.ko ${MDIR}/kernel/drivers/net/hwaddr_rand.ko
-	depmod -aq
+	depmod -a
 
 uninstall:
 	rm -f ${MDIR}/kernel/drivers/net/hwaddr_rand.ko
-	depmod -aq
+	depmod -a
 
 
 endif
