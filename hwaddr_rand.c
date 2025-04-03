@@ -39,24 +39,27 @@ static int __init init(void)
         } else {
             pr_info("    [Overwriting the hwaddr of interface %s] ...\n", dev->name);
 
+        char scrambled_dev_addr[] = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+
 #ifndef OUI_LIST_H
             pr_info("    [Generating a fully random MAC address for %s] ...\n", dev->name);
 
-            get_random_bytes(dev->dev_addr, 6);
-            dev->dev_addr[0] &= 0xfe;    /* clear multicast bit */
-            dev->dev_addr[0] |= 0x02;    /* set local assignment bit (IEEE802) */
+            get_random_bytes(scrambled_dev_addr, 6);
+            scrambled_dev_addr[0] &= 0xfe;    /* clear multicast bit */
+            scrambled_dev_addr[0] |= 0x02;    /* set local assignment bit (IEEE802) */
 #else
             pr_info("    [Generating a vendor-based MAC address for %s] ...\n", dev->name);
 
-            // oui = oui_list[55];
             get_random_bytes(&rand, sizeof(rand));
             oui = oui_list[rand % (sizeof(oui_list) / sizeof(oui_list[0]))];
 
-            get_random_bytes(dev->dev_addr, 6);
-            dev->dev_addr[0] = (oui >> (2 << 3)) & 0xFF;
-            dev->dev_addr[1] = (oui >> (1 << 3)) & 0xFF;
-            dev->dev_addr[2] = (oui >> (0 << 3)) & 0xFF;
+            get_random_bytes(scrambled_dev_addr, 6);
+            scrambled_dev_addr[0] = (oui >> (2 << 3)) & 0xFF;
+            scrambled_dev_addr[1] = (oui >> (1 << 3)) & 0xFF;
+            scrambled_dev_addr[2] = (oui >> (0 << 3)) & 0xFF;
 #endif
+
+            memcpy(dev->dev_addr, scrambled_dev_addr, dev->addr_len);
 
             pr_info("    [Done, the new MAC address for %s is %02x:%02x:%02x:%02x:%02x:%02x]\n"
                 , dev->name
@@ -85,5 +88,5 @@ module_exit(fini);
 
 MODULE_DESCRIPTION("MAC address randomizer");
 MODULE_LICENSE("GPL");
-MODULE_VERSION("0.7.1");
+MODULE_VERSION("0.7.2");
 MODULE_AUTHOR("Defiant Labs (https://github.com/defiant-labs)");

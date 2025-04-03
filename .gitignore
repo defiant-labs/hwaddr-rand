@@ -1,6 +1,7 @@
 # Object files
 *.[aod]
 *.ko
+*.mod
 
 # Weird stuff
 .tmp_versions
